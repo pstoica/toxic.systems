@@ -48,6 +48,7 @@ const { title } = Astro.props;
 		font-family: system-ui, sans-serif;
 		background: #fff;
 		background-size: 224px;
+		height: -webkit-fill-available;
 	}
 	html, body {
 		margin: 0;
@@ -72,22 +73,24 @@ const { title } = Astro.props;
 		line-height: 1;
 		text-align: center;
 		margin: 0;
-		padding: 4rem;
+		padding-bottom: 3rem;
 		border-radius: 15px;
 	}
 
 	@media only screen and (max-width: 430px) {
 		h1 {
-			font-size: 3.5rem;
+			font-size: 3.4rem;
 		}
 	}
 
 	#container {
+		background: linear-gradient(to bottom, rgba(255,255,255,1) 0%,rgba(255,255,255,0) 25%, rgba(255,255,255,0) 75%, rgba(255,255,255,1));
 		display: flex;
 		flex-direction: column;
 		align-items: center;
 		justify-content: center;
 		height: 100vh;
+		height: 100dvh;
 		-webkit-backdrop-filter: blur(30px);
     backdrop-filter: blur(30px);
 		color: #111;
