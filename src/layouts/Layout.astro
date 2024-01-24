@@ -15,9 +15,10 @@ const { title } = Astro.props;
     <meta property="og:description" content="build alternative futures today">
     <meta property="og:image" content="/og.png">
     <!-- <meta property="og:url" content="https://toxic.systems" /> -->
-    <meta property="og:title" content="toxic.systems = join the waitlist" />
+    <!-- <meta property="og:title" content="toxic.systems = join the waitlist" />
     <meta property="og:description" content="building sustainable alternatives for workers" />
-    <meta property="og:image" content="/og.png" />
+    <meta property="og:image" content="/og.png" /> -->
+    <meta name="twitter:card" content="summary" />
     <link rel="icon" type="image/svg+xml" href="https://fav.farm/%F0%9F%A4%AE" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -118,22 +119,37 @@ const { title } = Astro.props;
 
 <script>
   // @ts-nocheck
+  const DEFAULT_SPEED = 0.8;
   const canvas = document.getElementById('hydra');
   new Hydra({ detectAudio: false, canvas: canvas })
-  let stick = false;
-  // let lastX, lastY;
+  let isPaused = false;
+  let lastX = width;
+  let lastY = height;
+  let didMouseMove = false;
   const container = document.getElementById('container');
-  container?.addEventListener('click', (e) => {
-    if (container === e.target) {
-      stick = !stick;
-      speed = stick ? 0 : 1;
+  const pauseHandler = (e) => {
+    if (e.pointerType !== "mouse") {
+      return;
     }
-  });
+    didMouseMove = true;
+    if (container === e.target) {
+      isPaused = !isPaused;
+      speed = isPaused ? 0 : DEFAULT_SPEED;
+    }
+  }
+  const moveHandler = (e) => {
+    didMouseMove = true;
+  };
+  container?.addEventListener('click', pauseHandler);
+  container?.addEventListener('ontouchstart', moveHandler);
+  container?.addEventListener('mousemove', moveHandler);
 
   const isReduced = window.matchMedia(`(prefers-reduced-motion: reduce)`) === true || window.matchMedia(`(prefers-reduced-motion: reduce)`).matches === true;
 
   if (isReduced) {
     speed = 0;
+  } else {
+    speed = DEFAULT_SPEED;
   }
 
   osc(8, 0.2, 1)
@@ -148,16 +164,16 @@ const { title } = Astro.props;
     // .pixelate(() => (mouse.x / width) * 100, () => (mouse.y / height) * 100)
     .pixelate(
       () => {
-        // if (!stick) {
-        //   lastX = mouse.x;
-        // }
-        return Math.max((mouse.x / width) * 100, 1);
+        if (!isPaused && didMouseMove) {
+          lastX = mouse.x;
+        }
+        return Math.max((lastX / width) * 100, 1);
       },
       () => {
-        // if (!stick) {
-        //   lastY = mouse.y;
-        // }
-        return Math.max((mouse.y / height) * 100, 1);
+        if (!isPaused && didMouseMove) {
+          lastY = mouse.y;
+        }
+        return Math.max((lastY / height) * 100, 1);
       }
     )
     // .pixelate(() => ((mouse.x / width) * 100) , 1000)
