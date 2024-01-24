@@ -3,25 +3,44 @@ import Layout from '../layouts/Layout.astro';
 ---
 
 <Layout title="toxic.systems - join the waitlist">
-	<button data-tally-open="w2P5qp" data-tally-layout="modal" data-tally-hide-title="1" data-tally-overlay="1" data-tally-emoji-animation="none">join the waitlist</button>
+  <div class="buttons">
+    <button data-tally-open="w2P5qp" data-tally-layout="modal" data-tally-hide-title="1" data-tally-overlay="1" data-tally-emoji-animation="none" ontouchstart="">join the waitlist</button>
+    <a href="mailto:fix@toxic.systems" class="button">get in touch</a>
+  </div>
 </Layout>
 
 <style>
-	button {
-		font-family: 'Space Grotesk', sans-serif;
-		background: #fff;
-		color: #111;
-		padding: 1rem;
-		font-size: 2rem;
-		border: 1px solid #111;
-		box-shadow: 0px 4px 2px #111;
-		cursor: pointer;
-	}
+  .buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
 
-	button:active {
-		transform: translate(0px, 4px);
-		box-shadow: 0 0 0 #111;
-	}
+  button, .button {
+    transition: all 0.15s ease-in-out;
+    font-family: 'Space Grotesk', sans-serif;
+    background: #fff;
+    color: #111;
+    padding: 1rem;
+    font-size: 2rem;
+    border: 1px solid #111;
+    box-shadow: 0px 4px 2px #111;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    -webkit-backdrop-filter: blur(30px);
+    backdrop-filter: blur(30px);
+    user-select: none;
+  }
+
+  button:active, .button:active {
+    transform: translate(0px, 4px);
+    box-shadow: 0 0 0 #111;
+  }
+
+  button:hover, .button:hover {
+    background: rgba(0,0,0,0.1);
+  }
 </style>
 
 <script async src="https://tally.so/widgets/embed.js" is:inline></script>

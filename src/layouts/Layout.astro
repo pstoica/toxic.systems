@@ -1,6 +1,6 @@
 ---
 interface Props {
-	title: string;
+  title: string;
 }
 
 const { title } = Astro.props;
@@ -8,125 +8,149 @@ const { title } = Astro.props;
 
 <!doctype html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<meta property="og:title" content="toxic.systems - join the waitlist">
-		<meta property="og:description" content="build alternative futures today">
-		<meta property="og:image" content="/og.png">
-		<link rel="icon" type="image/svg+xml" href="https://fav.farm/%F0%9F%A4%AE" />
-		<link rel="preconnect" href="https://fonts.googleapis.com">
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-		<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;700&display=swap" rel="stylesheet">
-		<meta name="generator" content={Astro.generator} />
-		<title>{title}</title>
-	</head>
-	<body>
-		<canvas id="hydra" />
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta property="og:title" content="toxic.systems - join the waitlist">
+    <meta property="og:description" content="build alternative futures today">
+    <meta property="og:image" content="/og.png">
+    <link rel="icon" type="image/svg+xml" href="https://fav.farm/%F0%9F%A4%AE" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;700&display=swap" rel="stylesheet">
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+  </head>
+  <body>
+    <canvas id="hydra" />
 
-		<div id="container">
-			<h1>toxic.systems</h1>
-			<div>
-			<slot />
-			</div>
-		</div>
-	</body>
+    <div id="container">
+      <h1>toxic.systems</h1>
+      <div>
+      <slot />
+      </div>
+    </div>
+  </body>
 </html>
 <style is:global>
-	:root {
-		--accent: 136, 58, 234;
-		--accent-light: 224, 204, 250;
-		--accent-dark: 49, 10, 101;
-		--accent-gradient: linear-gradient(
-			45deg,
-			rgb(var(--accent)),
-			rgb(var(--accent-light)) 30%,
-			white 60%
-		);
-	}
-	html {
-		font-family: system-ui, sans-serif;
-		background: #fff;
-		background-size: 224px;
-		height: -webkit-fill-available;
-	}
-	html, body {
-		margin: 0;
-		padding: 0;
-		font-family: 'Space Grotesk', sans-serif;
-	}
-	code {
-		font-family:
-			Menlo,
-			Monaco,
-			Lucida Console,
-			Liberation Mono,
-			DejaVu Sans Mono,
-			Bitstream Vera Sans Mono,
-			Courier New,
-			monospace;
-	}
+  :root {
+    --accent: 136, 58, 234;
+    --accent-light: 224, 204, 250;
+    --accent-dark: 49, 10, 101;
+    --accent-gradient: linear-gradient(
+      45deg,
+      rgb(var(--accent)),
+      rgb(var(--accent-light)) 30%,
+      white 60%
+    );
+  }
+  html {
+    font-family: system-ui, sans-serif;
+    background: #fff;
+    background-size: 224px;
+    height: -webkit-fill-available;
+  }
+  html, body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Space Grotesk', sans-serif;
+  }
+  code {
+    font-family:
+      Menlo,
+      Monaco,
+      Lucida Console,
+      Liberation Mono,
+      DejaVu Sans Mono,
+      Bitstream Vera Sans Mono,
+      Courier New,
+      monospace;
+  }
 
-	h1 {
-		font-size: 4rem;
-		font-weight: 700;
-		line-height: 1;
-		text-align: center;
-		margin: 0;
-		padding-bottom: 3rem;
-		border-radius: 15px;
-	}
+  h1 {
+    font-size: 4rem;
+    font-weight: 700;
+    line-height: 1;
+    text-align: center;
+    margin: 0;
+    padding-bottom: 3rem;
+    border-radius: 15px;
+    text-shadow: 0px 3px #fff;
+ }
 
-	@media only screen and (max-width: 430px) {
-		h1 {
-			font-size: 3.4rem;
-		}
-	}
+  @media only screen and (max-width: 430px) {
+    h1 {
+      font-size: 3.2rem;
+    }
+  }
 
-	#container {
-		background: linear-gradient(to bottom, rgba(255,255,255,1) 0%,rgba(255,255,255,0) 50%, rgba(255,255,255,1) 100%);
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		justify-content: center;
-		height: 100vh;
-		height: 100dvh;
-		-webkit-backdrop-filter: blur(30px);
-    backdrop-filter: blur(30px);
-		color: #111;
-	}
+  #container {
+    background: linear-gradient(to bottom, rgba(255,255,255,1) 0%,rgba(255,255,255,0) 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    height: 100dvh;
+    color: #111;
+  }
 
-	#hydra {
-		position: absolute;
-		z-index: -1;
-		top: 0;
-		left: 0;
-		width: 100%;
-		height: 100%;
-	}
+  #hydra {
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
 </style>
 
 <script is:inline>
-	!function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.async=!0,p.src=s.api_host+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+".people (stub)"},o="capture identify alias people.set people.set_once set_config register register_once unregister opt_out_capturing has_opted_out_capturing opt_in_capturing reset isFeatureEnabled onFeatureFlags getFeatureFlag getFeatureFlagPayload reloadFeatureFlags group updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures getActiveMatchingSurveys getSurveys onSessionId".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
-	posthog.init('phc_jeYyM0wwGEChQi12vtcLWhZo9Afdju45MKkXP1PU3be',{api_host:'https://app.posthog.com'})
+  !function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.async=!0,p.src=s.api_host+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+".people (stub)"},o="capture identify alias people.set people.set_once set_config register register_once unregister opt_out_capturing has_opted_out_capturing opt_in_capturing reset isFeatureEnabled onFeatureFlags getFeatureFlag getFeatureFlagPayload reloadFeatureFlags group updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures getActiveMatchingSurveys getSurveys onSessionId".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
+  posthog.init('phc_jeYyM0wwGEChQi12vtcLWhZo9Afdju45MKkXP1PU3be',{api_host:'https://app.posthog.com'})
 </script>
 
 <script src="https://unpkg.com/hydra-synth" is:inline></script>
 
 <script>
-	// @ts-nocheck
-	new Hydra({ detectAudio: false, canvas: document.getElementById('hydra') })
+  // @ts-nocheck
+  const canvas = document.getElementById('hydra');
+  new Hydra({ detectAudio: false, canvas: canvas })
+  let stick = false;
+  let lastX, lastY;
+  const container = document.getElementById('container');
+  container?.addEventListener('click', (e) => {
+    if (container === e.target) {
+      stick = !stick;
+    }
+  });
 
-	osc(8, 0.2, 1)
-		.color(1,-2,1)
-		.modulate(
-			noise(4,0.8).diff(noise(5,0.1))
-		)
-		.modulateRotate(
-			osc(4,0.2).add(noise(0.1)),
-			2
-		)
-		.pixelate(10000,100)
-		.out()
+  osc(8, 0.2, 1)
+    .color(1,-2,1)
+    .modulate(
+      noise(4,0.8).diff(noise(5,0.1))
+    )
+    .modulateRotate(
+      osc(4,0.2).add(noise(0.1)),
+      2
+    )
+    // .pixelate(() => (mouse.x / width) * 100, () => (mouse.y / height) * 100)
+    .pixelate(
+      () => {
+        if (!stick) {
+          lastX = mouse.x;
+        }
+        return Math.max((lastX / width) * 100, 1);
+      },
+      () => {
+        if (!stick) {
+          lastY = mouse.y;
+        }
+        return Math.max((lastY / height) * 100, 1);
+      }
+    )
+    // .pixelate(() => ((mouse.x / width) * 100) , 1000)
+    // .pixelate(10000,100)
+    .out()
 </script>
 
