@@ -3,7 +3,25 @@ import Layout from '../layouts/Layout.astro';
 ---
 
 <Layout title="toxic.systems">
+	<button data-tally-open="w2P5qp" data-tally-layout="modal" data-tally-hide-title="1" data-tally-overlay="1" data-tally-emoji-animation="none">join the waitlist</button>
 </Layout>
 
 <style>
+	button {
+		font-family: 'Space Grotesk', sans-serif;
+		background: #fff;
+		color: #111;
+		padding: 1rem;
+		font-size: 2rem;
+		border: 1px solid #111;
+		box-shadow: 4px 4px 0 #111;
+		cursor: pointer;
+	}
+
+	button:active {
+		transform: translate(4px, 4px);
+		box-shadow: 0 0 0 #111;
+	}
 </style>
+
+<script async src="https://tally.so/widgets/embed.js" is:inline></script>
