@@ -47,3 +47,11 @@ import Layout from '../layouts/Layout.astro';
 </style>
 
 <script async src="https://tally.so/widgets/embed.js" is:inline></script>
+<script>
+window.addEventListener('message', (e) => {
+	if (e?.data?.includes('Tally.FormSubmitted')) {
+    // @ts-ignore
+    posthog?.capture('Waitlist Form Submitted')
+	}
+});
+</script>
